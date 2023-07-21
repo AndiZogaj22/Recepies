@@ -7,9 +7,13 @@ function App() {
 
   return (
     <>
-      <SearchBar />
+    <div className="flex justify-center items-center ">
+    <SearchBar />
+    </div>
       
+      <div className="container mx-auto py-8">
       <Categories />
+    </div>
     </>
   )
 }

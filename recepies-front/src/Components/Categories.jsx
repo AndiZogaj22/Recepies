@@ -1,29 +1,38 @@
-import React from 'react'
+import React from "react";
+import { FaStar } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faUser, faMusic, faBook, faFilm } from "@fortawesome/free-solid-svg-icons";
+
+// Rest of the component code...
 
 const Categories = () => {
-  return (
-    <div className="stats shadow">
-  
-    <div className="stat place-items-center">
-      <div className="stat-title">Downloads</div>
-      <div className="stat-value">31K</div>
-      <div className="stat-desc">From January 1st to February 1st</div>
-    </div>
-    
-    <div className="stat place-items-center">
-      <div className="stat-title">Users</div>
-      <div className="stat-value text-secondary">4,200</div>
-      <div className="stat-desc text-secondary">↗︎ 40 (2%)</div>
-    </div>
-    
-    <div className="stat place-items-center">
-      <div className="stat-title">New Registers</div>
-      <div className="stat-value">1,200</div>
-      <div className="stat-desc">↘︎ 90 (14%)</div>
-    </div>
-    
-  </div>
-  )
-}
+  const categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'];
 
-export default Categories
+  // Array of icons
+  const icons = [
+    <FaStar className="mr-1" />,
+    <FontAwesomeIcon icon={faHome} className="mr-1" />,
+    <FontAwesomeIcon icon={faUser} className="mr-1" />,
+    <FontAwesomeIcon icon={faMusic} className="mr-1" />,
+    <FontAwesomeIcon icon={faBook} className="mr-1" />,
+  ];
+
+  // Function to get a random icon for each category
+  const getRandomIcon = () => icons[Math.floor(Math.random() * icons.length)];
+
+  return (
+    <div className="bg-gray-200 p-4 flex space-x-4">
+      {categories.map((category, index) => (
+        <div
+          key={index}
+          className="px-4 py-2 bg-white rounded-full cursor-pointer hover:bg-gray-100 transition duration-300 flex items-center"
+        >
+          {getRandomIcon()}
+          {category}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Categories;
