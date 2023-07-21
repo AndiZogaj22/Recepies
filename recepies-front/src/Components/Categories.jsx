@@ -6,7 +6,7 @@ import { faHome, faUser, faMusic, faBook, faFilm } from "@fortawesome/free-solid
 // Rest of the component code...
 
 const Categories = () => {
-  const categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'];
+  const categories = ['European', 'Asian', 'African', 'North American', 'South American'];
 
   // Array of icons
   const icons = [
