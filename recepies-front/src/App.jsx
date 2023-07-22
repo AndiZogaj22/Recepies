@@ -3,7 +3,7 @@ import './App.css'
 import SearchBar from './Components/SearchBar'
 import Categories from './Components/Categories'
 import Intro from './Components/Intro'
-import Card from './Components/Card'
+import RecipeContainer from './Components/RecepieContainer'
 function App() {
 
   return (
@@ -19,7 +19,7 @@ function App() {
       <Categories />
     </div>
     <div className="container mx-auto py-8">
-      <Card />
+      <RecipeContainer />
     </div>
     </>
   )
