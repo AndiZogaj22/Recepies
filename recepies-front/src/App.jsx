@@ -3,6 +3,7 @@ import './App.css'
 import SearchBar from './Components/SearchBar'
 import Categories from './Components/Categories'
 import Intro from './Components/Intro'
+import Card from './Components/Card'
 function App() {
 
   return (
@@ -16,6 +17,9 @@ function App() {
       
       <div className="container mx-auto py-8">
       <Categories />
+    </div>
+    <div className="container mx-auto py-8">
+      <Card />
     </div>
     </>
   )
