@@ -22,8 +22,9 @@ const recipeSchema = new mongoose.Schema({
   ingredients: { type: [String], required: true },
   country: { type: String, required: true },
   image: { type: String, required: true },
-});
-const Recipe = mongoose.model('Recipe', recipeSchema);
+}, { collection: 'RecepiesCollection' }); // Specify the custom collection name
+
+const Recipe = mongoose.model('RecepiesDocument', recipeSchema); // Specify the custom model name
 
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
@@ -51,6 +52,21 @@ app.post('/api/recipes', async (req, res) => {
     res.status(201).json(savedRecipe);
   } catch (err) {
     res.status(500).json({ error: 'Failed to save the recipe.' });
+  }
+});
+
+// Route to delete a recipe
+app.delete('/api/recipes/:id', async (req, res) => {
+  const recipeId = req.params.id;
+
+  try {
+    const deletedRecipe = await Recipe.findByIdAndDelete(recipeId);
+    if (!deletedRecipe) {
+      return res.status(404).json({ error: 'Recipe not found.' });
+    }
+    res.status(200).json({ message: 'Recipe deleted successfully.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete the recipe.' });
   }
 });
 
