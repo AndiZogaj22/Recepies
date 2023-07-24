@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const helmet = require('helmet');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -10,8 +11,8 @@ mongoose.connect('mongodb+srv://AndiZogaj:Ub9jMkhLWMO92A8r@andizogaj.tmvniin.mon
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('Connected to MongoDB'))
-.catch((err) => console.error('MongoDB connection error:', err));
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 // Create a Recipe schema and model
 const recipeSchema = new mongoose.Schema({
@@ -23,13 +24,24 @@ const recipeSchema = new mongoose.Schema({
 }, { collection: 'RecepiesCollection' }); // Specify the custom collection name
 
 const Recipe = mongoose.model('RecepiesDocument', recipeSchema); // Specify the custom model name
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/uploads', express.static('uploads'));
+app.use(helmet()); // Use the helmet middleware to set headers
+
+// Set Content Security Policy (CSP) header to allow fonts from 'localhost:3000'
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; font-src 'self' data: localhost:3000;"
+  );
+  next();
+});
 
 // Route to get all recipes
-app.get('http://localhost:3000/api/recipes', async (req, res) => {
+app.get('/api/recipes', async (req, res) => {
   try {
     const recipes = await Recipe.find({});
     res.json(recipes);
