@@ -13,10 +13,9 @@ const App = () => {
 
   return (
     <div>
-      <h1>Recipe App</h1>
-      <div className="recipe-container">
-        {recipes.map((recipe) => (
-          <div key={recipe._id} className="card w-96 bg-base-100 shadow-xl">
+      <div className="recipe-container" style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        {recipes.map((recipe, index) => (
+          <div key={recipe._id} className="card w-96 bg-base-100 shadow-xl" style={{ margin: "10px" }}>
             <figure className="px-10 pt-10">
               <img src={recipe.image} alt={recipe.name} className="rounded-xl" />
             </figure>
