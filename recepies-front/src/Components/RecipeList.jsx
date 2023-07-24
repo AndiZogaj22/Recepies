@@ -16,10 +16,17 @@ const App = () => {
       <h1>Recipe App</h1>
       <div className="recipe-container">
         {recipes.map((recipe) => (
-          <div key={recipe._id} className="recipe-card">
-            {recipe.image && <img className="recipe-image" src={`http://localhost:3000${recipe.image}`} alt={recipe.name} />}
-            <h2>{recipe.name}</h2>
-            <button className="get-recipe-button">Get Recipe</button>
+          <div key={recipe._id} className="card w-96 bg-base-100 shadow-xl">
+            <figure className="px-10 pt-10">
+              <img src={recipe.image} alt={recipe.name} className="rounded-xl" />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{recipe.name}</h2>
+              <p>{recipe.description}</p>
+              <div className="card-actions">
+                <button className="btn btn-primary">Get Recipe</button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
