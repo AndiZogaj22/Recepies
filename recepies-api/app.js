@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -8,29 +9,27 @@ const PORT = process.env.PORT || 3000;
 mongoose.connect('mongodb+srv://AndiZogaj:Ub9jMkhLWMO92A8r@andizogaj.tmvniin.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch((err) => console.error('MongoDB connection error:', err));
 
 // Create a Recipe schema and model
 const recipeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
-  ingredients: { type: [String], required: true },
+  ingredients: [{ type: String, required: true }],
   country: { type: String, required: true },
   image: { type: String, required: true },
 }, { collection: 'RecepiesCollection' }); // Specify the custom collection name
 
 const Recipe = mongoose.model('RecepiesDocument', recipeSchema); // Specify the custom model name
-
-// Middleware to parse JSON requests
+// Middleware
+app.use(cors());
 app.use(bodyParser.json());
+app.use('/uploads', express.static('uploads'));
 
 // Route to get all recipes
-app.get('/api/recipes', async (req, res) => {
+app.get('http://localhost:3000/api/recipes', async (req, res) => {
   try {
     const recipes = await Recipe.find({});
     res.json(recipes);
