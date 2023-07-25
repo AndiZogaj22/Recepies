@@ -19,6 +19,7 @@ function App() {
       </div>
       <div className="container mx-auto py-8">
         <RecipeList />
+        
       </div>
     </>
   );
