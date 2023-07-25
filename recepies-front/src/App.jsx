@@ -4,10 +4,11 @@ import SearchBar from './Components/SearchBar';
 import Categories from './Components/Categories';
 import Intro from './Components/Intro';
 import RecipeList from './Components/RecipeList';
-
+import Navbar from './Components/Navbar';
 function App() {
   return (
     <>
+      <Navbar />
       <div className="flex justify-center items-center">
         <Intro />
       </div>
