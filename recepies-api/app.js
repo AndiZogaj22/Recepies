@@ -21,7 +21,7 @@ const recipeSchema = new mongoose.Schema({
   ingredients: [{ type: String, required: true }],
   country: { type: String, required: true },
   image: { type: String, required: true },
-  
+  tutorial: { type: String, required: true }
 }, { collection: 'RecipesCollection' }); // Specify the custom collection name
 
 const Recipe = mongoose.model('RecipesDocument', recipeSchema); // Specify the custom model name
@@ -53,13 +53,13 @@ app.get('/api/recipes', async (req, res) => {
 
 // Route to add a new recipe
 app.post('/api/recipes', async (req, res) => {
-  const { name, description, ingredients, country, image } = req.body;
-  if (!name || !description || !ingredients || !country || !image) {
+  const { name, description, ingredients, country, image, tutorial } = req.body;
+  if (!name || !description || !ingredients || !country || !image || !tutorial) {
     return res.status(400).json({ error: 'Please provide all required fields.' });
   }
 
   try {
-    const newRecipe = new Recipe({ name, description, ingredients, country, image });
+    const newRecipe = new Recipe({ name, description, ingredients, country, image, tutorial });
     const savedRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
   } catch (err) {
