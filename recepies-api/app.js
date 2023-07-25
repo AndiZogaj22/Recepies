@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://AndiZogaj:Ub9jMkhLWMO92A8r@andizogaj.tmvniin.mongodb.net/', {
+mongoose.connect('mongodb+srv://AndiMongo:wtfisthis123@andicluster.x3fpaon.mongodb.net/RecipesDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -21,9 +21,10 @@ const recipeSchema = new mongoose.Schema({
   ingredients: [{ type: String, required: true }],
   country: { type: String, required: true },
   image: { type: String, required: true },
-}, { collection: 'RecepiesCollection' }); // Specify the custom collection name
+  
+}, { collection: 'RecipesCollection' }); // Specify the custom collection name
 
-const Recipe = mongoose.model('RecepiesDocument', recipeSchema); // Specify the custom model name
+const Recipe = mongoose.model('RecipesDocument', recipeSchema); // Specify the custom model name
 
 // Middleware
 app.use(cors());
