@@ -1,30 +1,21 @@
+// App.js
 import React from 'react';
-import './App.css';
-import SearchBar from './Components/SearchBar';
-import Categories from './Components/Categories';
-import Intro from './Components/Intro';
-import RecipeList from './Components/RecipeList';
-import Navbar from './Components/Navbar';
-import { Route,Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TotalRecipes from './pages/TotalRecipes';
+import Home from './pages/Home';
+import MyRecipes from './pages/MyRecipes';
+import RecipeDetails from './components/RecipeDetails';
+
 function App() {
   return (
-    <>
-      <Navbar />
-      <div className="flex justify-center items-center">
-        <Intro />
-        
-      </div>
-      <div className="flex justify-center items-center pt-10">
-        <SearchBar />
-      </div>
-      <div className="container mx-auto py-8">
-        <Categories />
-      </div>
-      <div className="container mx-auto py-8">
-        <RecipeList />
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/allrecipes" element={<TotalRecipes />} />
+        <Route path="/myrecipes" element={<MyRecipes />} />
+        <Route path="/totalrecipes/:recipeId" element={<RecipeDetails />} />
+      </Routes>
+    </Router>
   );
 }
 
