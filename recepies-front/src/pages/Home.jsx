@@ -1,9 +1,14 @@
 import React from 'react'
-
+import '../App.css';
+import Intro from '../Components/Intro'
+import SearchBar from '../Components/SearchBar'
+import Categories from '../Components/Categories'
+import RecipeList from '../Components/RecipeList'
+import Navbar from '../Components/Navbar';
 const Home = () => {
   return (
-    <div>
-        <Navbar />
+   <>
+     <Navbar />
       <div className="flex justify-center items-center">
         <Intro />
       </div>
@@ -16,7 +21,7 @@ const Home = () => {
       <div className="container mx-auto py-8">
         <RecipeList />
       </div>
-    </div>
+   </>
   )
 }
 
