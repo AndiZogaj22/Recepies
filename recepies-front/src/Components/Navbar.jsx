@@ -1,7 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiHome, FiBook, FiHeart } from 'react-icons/fi';
 import { GiCook } from 'react-icons/gi';
+
+const navigations = [
+  {
+    name: 'Home',
+    path: '/'
+  },
+  {
+    name: 'All Recipes',
+    path: '/allrecipes'
+  },
+  {
+    name: 'My Recipes',
+    path: '/myrecipes'
+  },
+];
 
 const Navbar = () => {
   return (
@@ -12,21 +26,16 @@ const Navbar = () => {
       </div>
 
       <ul className="flex space-x-4">
-        <li>
-          <div className="link">
-            <h3 className="text-xl hover:underline hover:text-orange-500">Home</h3>
-          </div>
-        </li>
-        <li>
-          <div className="link">
-            <h3 className="text-xl hover:underline hover:text-orange-500">Recipes</h3>
-          </div>
-        </li>
+        {navigations.map((navigation) => (
+          <li key={navigation.path}>
+            <Link to={navigation.path} className="link">
+              <h3 className="text-xl hover:underline hover:text-orange-500">{navigation.name}</h3>
+            </Link>
+          </li>
+        ))}
       </ul>
 
-      <button className="btn btn-outline btn-success">
-        <FiHeart className="text-xl" />My Recipes
-      </button>
+      
     </nav>
   );
 };
