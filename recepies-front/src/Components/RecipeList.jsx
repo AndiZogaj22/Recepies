@@ -1,9 +1,8 @@
-// RecipeList.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const RecipeList = () => {
+const RecipeList = ({ limit }) => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -19,10 +18,13 @@ const RecipeList = () => {
     return description.length > maxLength ? description.slice(0, maxLength) + '...' : description;
   };
 
+  // Limit the number of recipes to be shown based on the 'limit' prop
+  const limitedRecipes = recipes.slice(0, limit);
+
   return (
     <div>
       <div className="recipe-container" style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-        {recipes.map((recipe, index) => (
+        {limitedRecipes.map((recipe, index) => (
           <div key={recipe._id} className="card w-96 h-96 bg-base-100 shadow-xl pb-24" style={{ margin: "30px" }}>
             <figure className="px-10 pt-15" style={{ height: "50%" }}>
               <img src={recipe.image} alt={recipe.name} className="rounded-xl" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
