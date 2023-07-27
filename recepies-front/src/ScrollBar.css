@@ -1,0 +1,28 @@
+/* Add the custom scrollbar style to the body or any container element */
+
+/* Hide the default scrollbar */
+body::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #ffad00; /* Use the amber color */
+  border-radius: 6px;
+}
+
+/* For Firefox */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #ffad00 #f5f5f5; /* Use the amber color */
+}
+
+body::-webkit-scrollbar-thumb:vertical {
+  background-color: #ffad00; /* Use the amber color */
+}
+
+body::-webkit-scrollbar-thumb:horizontal {
+  background-color: #ffad00; /* Use the amber color */
+}
+
+/* Customize the scrollbar track and thumb styles as per your requirement */
