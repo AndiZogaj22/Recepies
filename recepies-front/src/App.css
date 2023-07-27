@@ -5,7 +5,7 @@ body {
   justify-content: center;
   margin-left: 35%;
   margin-right: 35%;
- 
+ overflow-x: hidden;
 }
 .recipe-container {
   display: flex;
