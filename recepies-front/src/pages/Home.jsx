@@ -1,18 +1,19 @@
-import React from 'react'
+import React from 'react';
 import '../App.css';
 import '../ScrollBar.css';
-import ImageCarousel from '../Components/ImageCarousel'
-import SearchBar from '../Components/SearchBar'
-import Categories from '../Components/Categories'
-import RecipeList from '../Components/RecipeList'
+import ImageCarousel from '../Components/ImageCarousel';
+import SearchBar from '../Components/SearchBar';
+import Categories from '../Components/Categories';
+import RecipeList from '../Components/RecipeList';
 import Navbar from '../Components/Navbar';
 import { Link } from 'react-router-dom';
+
 const Home = () => {
   return (
-   <>
-     <Navbar />
+    <>
+      <Navbar />
       <div className="flex justify-center items-center">
-        <ImageCarousel /> 
+        <ImageCarousel />
       </div>
       <div className="flex justify-center items-center pt-10">
         <SearchBar />
@@ -21,15 +22,16 @@ const Home = () => {
         <Categories />
       </div>
       <div className="container mx-auto py-8">
-        <RecipeList />
+        {/* Limit the number of recipes to be shown to 9 on the Home page */}
+        <RecipeList limit={9} />
       </div>
       <div className="text-center mt-4">
         <Link to="/allrecipes">
           <button className="btn btn-outline btn-warning">See All</button>
         </Link>
       </div>
-   </>
-  )
-}
+    </>
+  );
+};
 
-export default Home
+export default Home;
