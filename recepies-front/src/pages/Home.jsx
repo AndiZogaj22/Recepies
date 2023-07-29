@@ -15,7 +15,9 @@ const Home = ({ handleSearch }) => {
         <ImageCarousel />
       </div>
       <div className="flex justify-center items-center pt-10">
-        <SearchBar handleSearch={handleSearch} />
+       
+<h1 class="max-w-lg text-3xl font-semibold leading-loose text-gray-900 dark:text-white">Top Recipes</h1>
+
       </div>
 
       <div className="container mx-auto py-8">

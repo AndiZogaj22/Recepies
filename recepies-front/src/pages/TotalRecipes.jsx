@@ -16,9 +16,7 @@ const TotalRecipes = () => {
   return (
     <div>
       <Navbar />
-      <div className="container mx-auto py-8">
-        <Categories />
-      </div>
+      
       <div className="flex justify-center items-center pt-10">
         <SearchBar handleSearch={handleSearch} />
       </div>
