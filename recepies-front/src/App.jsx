@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TotalRecipes from './pages/TotalRecipes';
 import Home from './pages/Home';
 import MyRecipes from './pages/MyRecipes';
-import RecipeDetails from './components/RecipeDetails';
+import RecipeDetails from './Components/RecipeDetails'; // Replace './path/to/RecipeDetails' with the correct path to your RecipeDetails component
 
 function App() {
   return (
