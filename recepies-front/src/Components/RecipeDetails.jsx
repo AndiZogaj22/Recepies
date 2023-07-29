@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import Navbar from '../Components/Navbar'
+import Navbar from '../Components/Navbar';
+
 const RecipeDetails = () => {
   const location = useLocation();
 
@@ -14,20 +15,24 @@ const RecipeDetails = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="max-w-xl mx-auto p-4 mt-8">
-      <h2 className="text-2xl font-bold mb-4">{recipe.name}</h2>
-      <p className="text-gray-600 mb-4">{recipe.description}</p>
-      <p className="text-gray-600">Country: {recipe.country}</p>
-      <h3 className="text-xl font-semibold mt-6">Ingredients:</h3>
-      <ul className="list-disc list-inside mt-2">
-        {recipe.ingredients.map((ingredient, index) => (
-          <li key={index} className="text-gray-600">{ingredient}</li>
-        ))}
-      </ul>
-      <img src={recipe.image} alt={recipe.name} className="mt-6 rounded-lg shadow-xl" style={{ width: '100%', height: 'auto' }} />
-      <p className="text-gray-600 mt-4">Tutorial: {recipe.tutorial}</p>
-    </div>
+      <Navbar />
+      <div className="max-w-7xl mx-auto p-4 mt-8 flex flex-wrap">
+        <div className="w-full md:w-1/2 p-4">
+          <h2 className="text-2xl font-bold mb-4">{recipe.name}</h2>
+          <p className="text-gray-600 mb-4">{recipe.description}</p>
+          <p className="text-gray-600">Country: {recipe.country}</p>
+          <h3 className="text-xl font-semibold mt-6">Ingredients:</h3>
+          <ul className="list-disc list-inside mt-2">
+            {recipe.ingredients.map((ingredient, index) => (
+              <li key={index} className="text-gray-600">{ingredient}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-full md:w-1/2 p-4">
+          <img src={recipe.image} alt={recipe.name} className="rounded-lg shadow-xl" style={{ width: '100%', height: 'auto' }} />
+          <p className="text-gray-600 mt-4">Tutorial: {recipe.tutorial}</p>
+        </div>
+      </div>
     </>
   );
 };
