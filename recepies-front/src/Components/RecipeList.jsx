@@ -34,9 +34,11 @@ const RecipeList = ({ limit }) => {
               <h2 className="badge badge-outline p-3">{recipe.country}</h2>
               <p>{truncateDescription(recipe.description)}</p>
               <div className="card-actions">
-                <Link to={{ pathname: `/totalrecipes/${recipe._id}`, state: { recipe } }}>
-                  <button className="btn btn-outline btn-info">Get Recipe</button>
+                {/* Update the 'to' prop of Link to correctly navigate to the RecipeDetails page */}
+                <Link to={`/totalrecipes/${recipe._id}`} state={{ recipe }}>
+                  <button className="btn btn-outline btn-info">Details</button>
                 </Link>
+                <button className="btn btn-outline btn-warning">Save Recipe</button>
               </div>
             </div>
           </div>
