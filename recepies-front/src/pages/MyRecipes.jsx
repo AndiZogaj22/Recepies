@@ -5,7 +5,8 @@ import '../ScrollBar.css';
 
 const MyRecipes = () => {
   return (
-    <div>
+    <>
+    <div className="flex justify-center items-center pb-16 pt-28">
       <Navbar />
       <div className="overflow-x-auto">
   <table className="table">
@@ -159,6 +160,7 @@ const MyRecipes = () => {
   </table>
 </div>
       </div>
+      </>
   )
 }
 

@@ -17,10 +17,12 @@ const TotalRecipes = () => {
     <div>
       <Navbar />
       
-      <div className="flex justify-center items-center pt-10">
+      <div className="flex justify-center items-center pt-24">
         <SearchBar handleSearch={handleSearch} />
       </div>
+      <div className="flex justify-center items-center pb-16 pt-10">
       <RecipeList limit={10} searchQuery={searchQuery} />
+      </div>
     </div>
   );
 };
