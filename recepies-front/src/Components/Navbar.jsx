@@ -14,9 +14,13 @@ const navigations = [
     path: '/allrecipes'
   },
   {
+    name: 'Login', // New link for login
+    path: '/login'
+  },
+  {
     name: 'My Recipes',
     path: '/myrecipes'
-  },
+  }
 ];
 
 const Navbar = () => {
@@ -25,7 +29,6 @@ const Navbar = () => {
       <div className="flex items-center">
         <GiCook className="text-amber-600	 text-3xl mr-2" />
         <span className="text-amber-600	 font-bold text-xl">MediterraneanCuisine</span> {/* Updated the text color to green */}
-
       </div>
 
       <ul className="flex space-x-4 items-center ml-auto list-none"> {/* Added list-none class */}
