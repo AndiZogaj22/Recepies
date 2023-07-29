@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import MyRecipes from '../pages/MyRecipes';
 
 const RecipeList = ({ limit, searchQuery }) => {
   const [recipes, setRecipes] = useState([]);
@@ -22,6 +23,14 @@ const RecipeList = ({ limit, searchQuery }) => {
   const filteredRecipes = recipes
     .filter((recipe) => recipe.name.toLowerCase().includes(searchQuery.toLowerCase()))
     .slice(0, limit);
+
+  // State to store the saved recipes
+  const [savedRecipes, setSavedRecipes] = useState([]);
+
+  // Function to handle saving recipes to the MyRecipes component
+  const saveRecipe = (recipe) => {
+    setSavedRecipes((prevRecipes) => [...prevRecipes, recipe]);
+  };
 
   return (
     <div>
@@ -45,7 +54,10 @@ const RecipeList = ({ limit, searchQuery }) => {
                 <Link to={`/totalrecipes/${recipe._id}`} state={{ recipe }}>
                   <button className="btn btn-outline btn-info">Details</button>
                 </Link>
-                <button className="btn btn-outline btn-warning">Save Recipe</button>
+                {/* Pass the recipe data to the MyRecipes component */}
+                <button className="btn btn-outline btn-warning" onClick={() => saveRecipe(recipe)}>
+                  Save Recipe
+                </button>
               </div>
             </div>
           </div>
