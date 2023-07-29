@@ -21,7 +21,7 @@ const navigations = [
 
 const Navbar = () => {
   return (
-    <nav className="bg-white p-4 mt-5 flex justify-between items-center shadow-md">
+    <nav className="bg-white p-4  flex justify-between items-center shadow-md">
       <div className="flex items-center">
         <GiCook className="text-amber-600	 text-3xl mr-2" />
         <span className="text-amber-600	 font-bold text-xl">MediterraneanCuisine</span> {/* Updated the text color to green */}
