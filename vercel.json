@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "build/index.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "src/**/*",
+        "use": "vite",
+        "config": {
+          "build": {
+            "ssrManifest": true
+          }
+        }
+      }
+    ]
+  }
+  
