@@ -4,7 +4,35 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const app = express();
+const path = require('path');
 const PORT = process.env.PORT || 3000;
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({path: __dirname+'/.env'});
+}
+app.use(express.json());
+mongoose.connect(process.env.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  poolSize: 1
+})
+  .then(() => {
+    app.listen(port);
+  })
+
+app.use('/some-route', require(path.join(__dirname, 'api', 'routes', 'route.js')));
+
+// static files (build of your frontend)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../recepies-front', 'build')));
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../recepies-front', 'build', 'index.html'));
+  })
+}
+
+
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://AndiMongo:wtfisthis123@andicluster.x3fpaon.mongodb.net/RecipesDB', {

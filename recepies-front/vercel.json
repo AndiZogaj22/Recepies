@@ -2,17 +2,20 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/index.js",
-      "use": "vite"
+      "src": "./recepies-api/app.js",  
+      "use": "@vercel/node"
+    },
+    {
+      "src": "./recepies-front/dist",   
+      "use": "@vercel/static"
     }
   ],
-  "routes": [
-    { "src": "/(.*).js", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
-    { "src": "/(.*).css", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
-    { "src": "/(.*).png", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
-    { "src": "/(.*).json", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
-    { "src": "/(.*).ico", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+
+
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/recepies-api/app.js"
+    }
   ]
 }
