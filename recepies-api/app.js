@@ -7,9 +7,6 @@ const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 
-
-
-
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://AndiMongo:wtfisthis123@andicluster.x3fpaon.mongodb.net/RecipesDB', {
   useNewUrlParser: true,
